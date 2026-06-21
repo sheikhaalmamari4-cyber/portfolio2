@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shekha Abdullah Almamari — Network & Database Specialist | Tech Innovator. A magical portfolio of achievements, projects, and skills." />
+  <title>Shekha Abdullah Almamari · The Wizarding Portfolio</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: '#5a1322',
+            'burgundy-light': '#8a1e34',
+            gold: '#d4af37',
+            'gold-light': '#f5d97a',
+            navy: '#0a0e1a',
+            charcoal: '#11131f',
+            parchment: '#e9dcc3',
+          },
+          fontFamily: {
+            display: ['"Cinzel Decorative"', 'serif'],
+            heading: ['Cinzel', 'serif'],
+            body: ['"EB Garamond"', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-navy text-parchment font-body antialiased overflow-x-hidden">
+
+  <!-- ===== Custom Magic-Wand Cursor ===== -->
+  <div id="cursor-dot" class="cursor-dot"></div>
+  <canvas id="spark-canvas" class="spark-canvas"></canvas>
+
+  <!-- ===== Starry / Floating-Candle Background ===== -->
+  <canvas id="night-canvas" class="fixed inset-0 -z-20 pointer-events-none"></canvas>
+  <div id="candles" class="fixed inset-0 -z-10 pointer-events-none overflow-hidden"></div>
+  <div class="fixed inset-0 -z-10 pointer-events-none vignette"></div>
+
+  <!-- ===== Navigation ===== -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-40 transition-all duration-500">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="font-display text-gold text-lg sm:text-xl tracking-wide glow-text-soft">S · A · A</a>
+      <ul class="hidden md:flex items-center gap-7 font-heading text-sm tracking-widest uppercase">
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#experience" class="nav-link">Leadership</a></li>
+        <li><a href="#projects" class="nav-link">Spellbook</a></li>
+        <li><a href="#skills" class="nav-link">Talents</a></li>
+      </ul>
+      <button id="menu-btn" class="md:hidden text-gold text-2xl" aria-label="Open menu">☰</button>
+    </nav>
+    <!-- Mobile menu -->
+    <ul id="mobile-menu" class="md:hidden hidden flex-col items-center gap-5 py-6 font-heading text-sm tracking-widest uppercase bg-charcoal/95 border-t border-gold/20">
+      <li><a href="#achievements" class="nav-link mobile-link">Achievements</a></li>
+      <li><a href="#experience" class="nav-link mobile-link">Leadership</a></li>
+      <li><a href="#projects" class="nav-link mobile-link">Spellbook</a></li>
+      <li><a href="#skills" class="nav-link mobile-link">Talents</a></li>
+    </ul>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6">
+    <div class="hero-content">
+      <p class="font-heading tracking-[0.4em] text-gold/80 text-xs sm:text-sm uppercase mb-6 fade-up" style="--d:.1s">
+        ⚡ Welcome to the Wizarding Portfolio of ⚡
+      </p>
+      <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl leading-tight glow-text fade-up" style="--d:.3s">
+        Shekha Abdullah<br />Almamari
+      </h1>
+      <div class="flex items-center justify-center gap-4 my-7 fade-up" style="--d:.5s">
+        <span class="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-gold"></span>
+        <span class="text-gold text-xl">✦</span>
+        <span class="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-gold"></span>
+      </div>
+      <p class="font-heading text-base sm:text-xl text-parchment/90 tracking-wide uppercase fade-up" style="--d:.6s">
+        Network &amp; Database Specialist · Tech Innovator
+      </p>
+      <p class="max-w-xl mx-auto mt-6 text-parchment/70 text-lg leading-relaxed fade-up" style="--d:.8s">
+        A highly motivated tech wizard blending the power of
+        <span class="text-gold-light">Networking</span>,
+        <span class="text-gold-light">Cybersecurity</span>, and
+        <span class="text-gold-light">AI</span>
+        to build magical digital solutions.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4 fade-up" style="--d:1s">
+        <a href="#projects" class="spell-btn">🔮 Open the Spellbook</a>
+        <a href="#skills" class="spell-btn spell-btn--ghost">✨ View Magical Talents</a>
+      </div>
+    </div>
+    <a href="#achievements" class="scroll-cue" aria-label="Scroll down">
+      <span class="font-heading text-xs tracking-[0.3em] text-gold/70 uppercase">Scroll</span>
+      <span class="scroll-arrow">❯</span>
+    </a>
+  </section>
+
+  <!-- ===== Achievements ===== -->
+  <section id="achievements" class="section-wrap">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="section-head reveal">
+        <span class="section-kicker">Section I</span>
+        <h2 class="section-title">Magical Achievements</h2>
+        <p class="section-sub">Honours earned through dedication, courage, and a touch of brilliance.</p>
+      </div>
+
+      <div class="grid gap-7 md:grid-cols-3 mt-14">
+        <article class="card tilt reveal" style="--d:.05s">
+          <div class="card-icon">🏆</div>
+          <h3 class="card-title">President's Award for Outstanding Achievement</h3>
+          <p class="card-text">
+            Received the Outstanding Student Achievement Award with an honorary shield in recognition of
+            advanced positions in competitions at the local level.
+          </p>
+        </article>
+
+        <article class="card tilt reveal" style="--d:.15s">
+          <div class="card-icon">🥈</div>
+          <h3 class="card-title">2nd Place · Sparkathon</h3>
+          <p class="card-text">
+            Secured second place in the Sparkathon hackathon — one of the top competitive achievements,
+            forged under pressure and creativity.
+          </p>
+        </article>
+
+        <article class="card tilt reveal" style="--d:.25s">
+          <div class="card-icon">📜</div>
+          <h3 class="card-title">Certificate of Excellence in Student Activities</h3>
+          <p class="card-text">
+            In recognition of leadership roles and active contributions to serving the university community
+            and student activities.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Leadership & Experience ===== -->
+  <section id="experience" class="section-wrap">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="section-head reveal">
+        <span class="section-kicker">Section II</span>
+        <h2 class="section-title">Leadership &amp; Academic Experience</h2>
+        <p class="section-sub">A trail of mentorship and service, marked upon the map.</p>
+      </div>
+
+      <div class="timeline mt-16">
+        <div class="timeline-item reveal" style="--d:.05s">
+          <div class="timeline-node">⚜️</div>
+          <div class="card timeline-card">
+            <h3 class="card-title">IT Club President</h3>
+            <p class="card-text">Led the club and contributed to organizing technical initiatives and events,
+              uniting students around a shared love of technology.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal" style="--d:.15s">
+          <div class="timeline-node">📖</div>
+          <div class="card timeline-card">
+            <h3 class="card-title">Peer Tutor · 2 Semesters</h3>
+            <p class="card-text">Worked as a Peer Tutor for two academic semesters, guiding and assisting
+              students academically through challenging coursework.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal" style="--d:.25s">
+          <div class="timeline-node">☁️</div>
+          <div class="card timeline-card">
+            <h3 class="card-title">Tech Workshops Organizer</h3>
+            <p class="card-text">Organized and participated in tech workshops covering Cloud Computing and
+              AWS, sharing knowledge across the wizarding community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Projects / Spellbook ===== -->
+  <section id="projects" class="section-wrap">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="section-head reveal">
+        <span class="section-kicker">Section III</span>
+        <h2 class="section-title">The Spellbook of Projects</h2>
+        <p class="section-sub">Innovative enchantments cast in code and circuitry.</p>
+      </div>
+
+      <div class="grid gap-7 md:grid-cols-2 mt-14">
+        <article class="card project-card tilt reveal" style="--d:.05s">
+          <div class="flex items-start gap-4">
+            <div class="card-icon shrink-0">🌱</div>
+            <div>
+              <h3 class="card-title">Smart Soil Analysis</h3>
+              <p class="card-text">An intelligent soil analysis project using AI and sensors to read the
+                earth's secrets and guide smarter agriculture.</p>
+              <div class="tag-row"><span class="tag">AI</span><span class="tag">IoT Sensors</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card tilt reveal" style="--d:.15s">
+          <div class="flex items-start gap-4">
+            <div class="card-icon shrink-0">🐫</div>
+            <div>
+              <h3 class="card-title">Camel &amp; Vehicle Alert System</h3>
+              <p class="card-text">An alert system for camels and vehicles designed to reduce road accidents
+                and protect lives on desert highways.</p>
+              <div class="tag-row"><span class="tag">Detection</span><span class="tag">Safety</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card tilt reveal" style="--d:.25s">
+          <div class="flex items-start gap-4">
+            <div class="card-icon shrink-0">🕸️</div>
+            <div>
+              <h3 class="card-title">Web Applications</h3>
+              <p class="card-text">Developed full-featured web apps using ASP.NET and SQL Server, crafting
+                reliable and elegant digital experiences.</p>
+              <div class="tag-row"><span class="tag">ASP.NET</span><span class="tag">SQL Server</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card tilt reveal" style="--d:.35s">
+          <div class="flex items-start gap-4">
+            <div class="card-icon shrink-0">🛡️</div>
+            <div>
+              <h3 class="card-title">Networking &amp; Security</h3>
+              <p class="card-text">Implemented advanced projects in Networking, Cybersecurity, and VPNs —
+                warding digital realms against dark forces.</p>
+              <div class="tag-row"><span class="tag">Networking</span><span class="tag">VPN</span><span class="tag">Security</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills / Magical Talents ===== -->
+  <section id="skills" class="section-wrap">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="section-head reveal">
+        <span class="section-kicker">Section IV</span>
+        <h2 class="section-title">Magical Talents</h2>
+        <p class="section-sub">Spell cards mastered through study and practice. Hover to channel each.</p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-14">
+        <div class="spell-card reveal" style="--d:.05s">
+          <div class="spell-card-inner">
+            <div class="spell-card-front"><span class="spell-rune">🐍</span><h3>Python Programming</h3></div>
+            <div class="spell-card-back"><p>Casting automation, AI, and data spells with elegant Python incantations.</p></div>
+          </div>
+        </div>
+        <div class="spell-card reveal" style="--d:.1s">
+          <div class="spell-card-inner">
+            <div class="spell-card-front"><span class="spell-rune">🌐</span><h3>Networking</h3></div>
+            <div class="spell-card-back"><p>Connecting realms through robust, secure, and scalable network design.</p></div>
+          </div>
+        </div>
+        <div class="spell-card reveal" style="--d:.15s">
+          <div class="spell-card-inner">
+            <div class="spell-card-front"><span class="spell-rune">🛡️</span><h3>Cybersecurity</h3></div>
+            <div class="spell-card-back"><p>Defensive enchantments that shield systems from the Dark Arts.</p></div>
+          </div>
+        </div>
+        <div class="spell-card reveal" style="--d:.2s">
+          <div class="spell-card-inner">
+            <div class="spell-card-front"><span class="spell-rune">🐧</span><h3>Linux</h3></div>
+            <div class="spell-card-back"><p>Commanding the terminal like a wand — precise, powerful, open.</p></div>
+          </div>
+        </div>
+        <div class="spell-card reveal" style="--d:.25s">
+          <div class="spell-card-inner">
+            <div class="spell-card-front"><span class="spell-rune">☁️</span><h3>Cloud Computing</h3></div>
+            <div class="spell-card-back"><p>Summoning scalable infrastructure from the AWS skies.</p></div>
+          </div>
+        </div>
+        <div class="spell-card reveal" style="--d:.3s">
+          <div class="spell-card-inner">
+            <div class="spell-card-front"><span class="spell-rune">📡</span><h3>IoT Technologies</h3></div>
+            <div class="spell-card-back"><p>Breathing intelligence into devices that sense the world.</p></div>
+          </div>
+        </div>
+        <div class="spell-card reveal sm:col-span-2 lg:col-span-3 lg:max-w-md lg:mx-auto" style="--d:.35s">
+          <div class="spell-card-inner">
+            <div class="spell-card-front"><span class="spell-rune">⚗️</span><h3>Web Development</h3></div>
+            <div class="spell-card-back"><p>Brewing dynamic experiences with ASP.NET &amp; SQL Server.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="relative py-14 text-center px-6 border-t border-gold/15 mt-10">
+    <div class="reveal">
+      <p class="font-display text-gold text-xl glow-text-soft">Mischief Managed.</p>
+      <p class="mt-3 text-parchment/60 max-w-md mx-auto">
+        Crafted with magic &amp; code by Shekha Abdullah Almamari — Network &amp; Database Specialist.
+      </p>
+      <div class="flex items-center justify-center gap-4 mt-6 text-gold/70">
+        <span class="h-px w-16 bg-gradient-to-r from-transparent to-gold/40"></span>
+        <span>⚡</span>
+        <span class="h-px w-16 bg-gradient-to-l from-transparent to-gold/40"></span>
+      </div>
+      <p class="mt-6 text-xs text-parchment/40 font-heading tracking-widest uppercase">
+        &copy; <span id="year"></span> · I solemnly swear that I am up to no good.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

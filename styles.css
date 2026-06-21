@@ -1,0 +1,397 @@
+/* ============================================================
+   Wizarding Portfolio — Shekha Abdullah Almamari
+   Custom magical styles layered on top of Tailwind
+   ============================================================ */
+
+:root {
+  --gold: #d4af37;
+  --gold-light: #f5d97a;
+  --burgundy: #5a1322;
+  --navy: #0a0e1a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:
+    radial-gradient(1200px 800px at 75% -10%, rgba(90, 19, 34, 0.55), transparent 60%),
+    radial-gradient(1000px 700px at 10% 110%, rgba(20, 24, 48, 0.6), transparent 60%),
+    linear-gradient(180deg, #0a0e1a 0%, #11131f 55%, #0a0e1a 100%);
+  background-attachment: fixed;
+  cursor: none;
+}
+
+/* Hide custom cursor / restore default on touch devices */
+@media (hover: none) {
+  body { cursor: auto; }
+  #cursor-dot, #spark-canvas { display: none; }
+}
+
+::selection { background: rgba(212, 175, 55, 0.3); color: #fff; }
+
+/* ---------- Atmospheric overlays ---------- */
+.vignette {
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+/* ---------- Custom Wand-Tip Cursor ---------- */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  box-shadow: 0 0 10px 3px rgba(212, 175, 55, 0.9), 0 0 22px 8px rgba(212, 175, 55, 0.45);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.12s ease, background 0.2s ease;
+}
+.cursor-dot.click { transform: scale(2.2); background: #fff; }
+.cursor-dot.hot   { transform: scale(1.8); }
+
+.spark-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+/* ---------- Floating Candles ---------- */
+.candle {
+  position: absolute;
+  width: 6px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #f0e6c8, #c9b27a);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  animation: candleFloat var(--float, 8s) ease-in-out infinite;
+  opacity: 0.85;
+}
+.candle::before { /* flame */
+  content: "";
+  position: absolute;
+  top: -11px; left: 50%;
+  width: 8px; height: 14px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle at 50% 70%, #fff7d6, #ffcf5c 40%, #ff8a1e 75%, rgba(255, 138, 30, 0) 100%);
+  box-shadow: 0 0 14px 5px rgba(255, 178, 60, 0.65);
+  animation: flicker 1.6s ease-in-out infinite;
+}
+@keyframes candleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-22px); }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scaleY(1); }
+  45%      { opacity: 0.78; transform: translateX(-50%) scaleY(1.12) translateX(-1px); }
+  70%      { opacity: 0.9; transform: translateX(-50%) scaleY(0.94) translateX(1px); }
+}
+
+/* ---------- Glowing Gold Text ---------- */
+.glow-text {
+  color: var(--gold-light);
+  text-shadow:
+    0 0 8px rgba(212, 175, 55, 0.55),
+    0 0 20px rgba(212, 175, 55, 0.4),
+    0 0 42px rgba(212, 175, 55, 0.25);
+  animation: titleGlow 4.5s ease-in-out infinite;
+}
+.glow-text-soft {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.45);
+}
+@keyframes titleGlow {
+  0%, 100% { text-shadow: 0 0 8px rgba(212,175,55,.5), 0 0 20px rgba(212,175,55,.35), 0 0 42px rgba(212,175,55,.22); }
+  50%      { text-shadow: 0 0 14px rgba(245,217,122,.75), 0 0 30px rgba(212,175,55,.5), 0 0 60px rgba(212,175,55,.35); }
+}
+
+/* ---------- Navbar ---------- */
+#navbar.scrolled {
+  background: rgba(10, 14, 26, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+.nav-link {
+  position: relative;
+  color: rgba(233, 220, 195, 0.78);
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transition: width 0.35s ease;
+}
+.nav-link:hover { color: var(--gold-light); text-shadow: 0 0 10px rgba(212,175,55,.6); }
+.nav-link:hover::after { width: 100%; }
+
+/* ---------- Hero ---------- */
+.hero-content { position: relative; z-index: 2; }
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 2;
+}
+.scroll-arrow {
+  display: inline-block;
+  transform: rotate(90deg);
+  color: var(--gold);
+  animation: bob 1.8s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: rotate(90deg) translateX(0); opacity: 0.6; }
+  50%      { transform: rotate(90deg) translateX(8px); opacity: 1; }
+}
+
+/* ---------- Spell Buttons (Lumos hover) ---------- */
+.spell-btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.85rem 1.9rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  border: 1px solid rgba(245, 217, 122, 0.6);
+  border-radius: 9999px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 0 rgba(212, 175, 55, 0);
+}
+.spell-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px 2px rgba(212, 175, 55, 0.65), 0 0 42px 10px rgba(212, 175, 55, 0.35);
+}
+.spell-btn::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transition: left 0.6s ease;
+}
+.spell-btn:hover::before { left: 130%; }
+.spell-btn--ghost {
+  color: var(--gold-light);
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+}
+.spell-btn--ghost:hover {
+  color: #fff;
+  background: rgba(212, 175, 55, 0.12);
+}
+
+/* ---------- Sections ---------- */
+.section-wrap { position: relative; padding: 6rem 0; }
+.section-head { text-align: center; max-width: 42rem; margin: 0 auto; }
+.section-kicker {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, 0.7);
+  margin-bottom: 0.9rem;
+}
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  color: var(--gold-light);
+  text-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
+  line-height: 1.15;
+}
+.section-sub {
+  margin-top: 1rem;
+  color: rgba(233, 220, 195, 0.65);
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+/* ---------- Marauder's Map reveal (ink-spread / fade-in) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(6px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.9s ease;
+  transition-delay: var(--d, 0s);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  position: relative;
+  padding: 2rem 1.75rem;
+  background: linear-gradient(160deg, rgba(90, 19, 34, 0.32), rgba(17, 19, 31, 0.72));
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212,175,55,.5), transparent 40%, transparent 60%, rgba(212,175,55,.35));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.card:hover {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 26px rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+.card:hover::before { opacity: 1; }
+
+.card-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.45));
+}
+.card-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+}
+.card-text { color: rgba(233, 220, 195, 0.78); line-height: 1.6; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 9999px;
+  background: rgba(212, 175, 55, 0.06);
+}
+
+/* ---------- Timeline ---------- */
+.timeline { position: relative; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 23px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(212,175,55,.55), rgba(212,175,55,.55), transparent);
+}
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.timeline-node {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(90,19,34,.9), rgba(17,19,31,.95));
+  border: 1.5px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.35);
+}
+.timeline-card { flex: 1; }
+
+/* ---------- Spell Cards (flip) ---------- */
+.spell-card {
+  perspective: 1100px;
+  height: 200px;
+}
+.spell-card-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.spell-card:hover .spell-card-inner { transform: rotateY(180deg); }
+.spell-card-front, .spell-card-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.spell-card-front {
+  background: linear-gradient(160deg, rgba(17,19,31,.85), rgba(90,19,34,.4));
+  box-shadow: inset 0 0 40px rgba(0,0,0,.35);
+}
+.spell-card-front h3 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  letter-spacing: 0.03em;
+}
+.spell-rune {
+  font-size: 2.6rem;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+  animation: runePulse 3s ease-in-out infinite;
+}
+@keyframes runePulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-5px) scale(1.06); }
+}
+.spell-card-back {
+  background: linear-gradient(160deg, rgba(90,19,34,.7), rgba(17,19,31,.92));
+  transform: rotateY(180deg);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25) inset;
+}
+.spell-card-back p {
+  color: var(--gold-light);
+  font-style: italic;
+  line-height: 1.55;
+}
+.spell-card:hover { filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.25)); }
+
+/* ---------- Accessibility: reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; filter: none; }
+  .fade-up { opacity: 1; transform: none; }
+}
