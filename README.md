@@ -39,11 +39,15 @@ python3 -m http.server 8000
 
 ## 🗂️ Structure
 
+Everything lives in a **single self-contained file** — just download `index.html`
+and double-click it to open in any browser.
+
 ```
-index.html   — markup & content
-styles.css   — magical theme, animations & effects
-script.js    — particles, cursor, scroll reveals, tilt
+index.html   — markup, styles & scripts all in one file
 ```
+
+> Note: Tailwind and the Google Fonts load from a CDN, so an internet connection
+> is needed the first time you open it.
 
 ---
 
