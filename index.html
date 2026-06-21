@@ -19,13 +19,15 @@
       theme: {
         extend: {
           colors: {
-            burgundy: '#5a1322',
-            'burgundy-light': '#8a1e34',
-            gold: '#d4af37',
-            'gold-light': '#f5d97a',
-            navy: '#0a0e1a',
-            charcoal: '#11131f',
-            parchment: '#e9dcc3',
+            burgundy: '#3d0f1c',
+            'burgundy-light': '#6e1d31',
+            gold: '#ffd700',
+            'gold-light': '#ffe98a',
+            amber: '#ffb347',
+            sunset: '#ff7a18',
+            navy: '#0d1126',
+            charcoal: '#0d0d11',
+            parchment: '#efe4c9',
           },
           fontFamily: {
             display: ['"Cinzel Decorative"', 'serif'],
@@ -43,17 +45,22 @@
        Custom magical styles layered on top of Tailwind
        ============================================================ */
     :root {
-      --gold: #d4af37;
-      --gold-light: #f5d97a;
-      --burgundy: #5a1322;
-      --navy: #0a0e1a;
+      --gold: #ffd700;
+      --gold-light: #ffe98a;
+      --amber: #ffb347;
+      --sunset: #ff7a18;
+      --burgundy: #3d0f1c;
+      --navy: #0d1126;
+      --charcoal: #0d0d11;
     }
     html { scroll-behavior: smooth; }
     body {
       background:
-        radial-gradient(1200px 800px at 75% -10%, rgba(90, 19, 34, 0.55), transparent 60%),
-        radial-gradient(1000px 700px at 10% 110%, rgba(20, 24, 48, 0.6), transparent 60%),
-        linear-gradient(180deg, #0a0e1a 0%, #11131f 55%, #0a0e1a 100%);
+        radial-gradient(1300px 900px at 78% -12%, rgba(255, 122, 24, 0.22), transparent 58%),
+        radial-gradient(1100px 750px at 72% 4%, rgba(255, 179, 71, 0.14), transparent 55%),
+        radial-gradient(1000px 800px at 8% 8%, rgba(61, 15, 28, 0.55), transparent 60%),
+        radial-gradient(1000px 700px at 12% 112%, rgba(13, 17, 38, 0.7), transparent 60%),
+        linear-gradient(180deg, #0d0d11 0%, #120d18 45%, #0d1126 75%, #0d0d11 100%);
       background-attachment: fixed;
       cursor: none;
     }
@@ -61,7 +68,7 @@
       body { cursor: auto; }
       #cursor-dot, #spark-canvas { display: none; }
     }
-    ::selection { background: rgba(212, 175, 55, 0.3); color: #fff; }
+    ::selection { background: rgba(255, 215, 0, 0.3); color: #fff; }
     .vignette {
       background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
     }
@@ -72,7 +79,7 @@
       margin: -5px 0 0 -5px;
       border-radius: 50%;
       background: var(--gold-light);
-      box-shadow: 0 0 10px 3px rgba(212, 175, 55, 0.9), 0 0 22px 8px rgba(212, 175, 55, 0.45);
+      box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.9), 0 0 22px 8px rgba(255, 215, 0, 0.45);
       pointer-events: none;
       z-index: 9999;
       transition: transform 0.12s ease, background 0.2s ease;
@@ -117,20 +124,20 @@
     .glow-text {
       color: var(--gold-light);
       text-shadow:
-        0 0 8px rgba(212, 175, 55, 0.55),
-        0 0 20px rgba(212, 175, 55, 0.4),
-        0 0 42px rgba(212, 175, 55, 0.25);
+        0 0 8px rgba(255, 215, 0, 0.55),
+        0 0 20px rgba(255, 215, 0, 0.4),
+        0 0 42px rgba(255, 215, 0, 0.25);
       animation: titleGlow 4.5s ease-in-out infinite;
     }
-    .glow-text-soft { text-shadow: 0 0 10px rgba(212, 175, 55, 0.45); }
+    .glow-text-soft { text-shadow: 0 0 10px rgba(255, 215, 0, 0.45); }
     @keyframes titleGlow {
-      0%, 100% { text-shadow: 0 0 8px rgba(212,175,55,.5), 0 0 20px rgba(212,175,55,.35), 0 0 42px rgba(212,175,55,.22); }
-      50%      { text-shadow: 0 0 14px rgba(245,217,122,.75), 0 0 30px rgba(212,175,55,.5), 0 0 60px rgba(212,175,55,.35); }
+      0%, 100% { text-shadow: 0 0 8px rgba(255, 215, 0,.5), 0 0 20px rgba(255, 215, 0,.35), 0 0 42px rgba(255, 215, 0,.22); }
+      50%      { text-shadow: 0 0 14px rgba(255, 233, 138,.75), 0 0 30px rgba(255, 215, 0,.5), 0 0 60px rgba(255, 215, 0,.35); }
     }
     #navbar.scrolled {
       background: rgba(10, 14, 26, 0.82);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.18);
       box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
     }
     .nav-link {
@@ -146,7 +153,7 @@
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
       transition: width 0.35s ease;
     }
-    .nav-link:hover { color: var(--gold-light); text-shadow: 0 0 10px rgba(212,175,55,.6); }
+    .nav-link:hover { color: var(--gold-light); text-shadow: 0 0 10px rgba(255, 215, 0,.6); }
     .nav-link:hover::after { width: 100%; }
     .hero-content { position: relative; z-index: 2; }
     .fade-up {
@@ -182,15 +189,15 @@
       letter-spacing: 0.08em;
       color: var(--navy);
       background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      border: 1px solid rgba(245, 217, 122, 0.6);
+      border: 1px solid rgba(255, 233, 138, 0.6);
       border-radius: 9999px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.4s ease;
-      box-shadow: 0 0 0 rgba(212, 175, 55, 0);
+      box-shadow: 0 0 0 rgba(255, 215, 0, 0);
     }
     .spell-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 0 18px 2px rgba(212, 175, 55, 0.65), 0 0 42px 10px rgba(212, 175, 55, 0.35);
+      box-shadow: 0 0 18px 2px rgba(255, 215, 0, 0.65), 0 0 42px 10px rgba(255, 215, 0, 0.35);
     }
     .spell-btn::before {
       content: "";
@@ -204,9 +211,9 @@
     .spell-btn--ghost {
       color: var(--gold-light);
       background: transparent;
-      border: 1px solid rgba(212, 175, 55, 0.55);
+      border: 1px solid rgba(255, 215, 0, 0.55);
     }
-    .spell-btn--ghost:hover { color: #fff; background: rgba(212, 175, 55, 0.12); }
+    .spell-btn--ghost:hover { color: #fff; background: rgba(255, 215, 0, 0.12); }
     .section-wrap { position: relative; padding: 6rem 0; }
     .section-head { text-align: center; max-width: 42rem; margin: 0 auto; }
     .section-kicker {
@@ -215,14 +222,14 @@
       font-size: 0.7rem;
       letter-spacing: 0.45em;
       text-transform: uppercase;
-      color: rgba(212, 175, 55, 0.7);
+      color: rgba(255, 215, 0, 0.7);
       margin-bottom: 0.9rem;
     }
     .section-title {
       font-family: 'Cinzel Decorative', serif;
       font-size: clamp(1.9rem, 5vw, 3.2rem);
       color: var(--gold-light);
-      text-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
+      text-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
       line-height: 1.15;
     }
     .section-sub {
@@ -243,7 +250,7 @@
       position: relative;
       padding: 2rem 1.75rem;
       background: linear-gradient(160deg, rgba(90, 19, 34, 0.32), rgba(17, 19, 31, 0.72));
-      border: 1px solid rgba(212, 175, 55, 0.22);
+      border: 1px solid rgba(255, 215, 0, 0.22);
       border-radius: 16px;
       backdrop-filter: blur(4px);
       transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.4s ease;
@@ -255,7 +262,7 @@
       position: absolute; inset: 0;
       border-radius: 16px;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(212,175,55,.5), transparent 40%, transparent 60%, rgba(212,175,55,.35));
+      background: linear-gradient(135deg, rgba(255, 215, 0,.5), transparent 40%, transparent 60%, rgba(255, 215, 0,.35));
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -264,15 +271,15 @@
       pointer-events: none;
     }
     .card:hover {
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 26px rgba(212, 175, 55, 0.2);
-      border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 26px rgba(255, 215, 0, 0.2);
+      border-color: rgba(255, 215, 0, 0.5);
     }
     .card:hover::before { opacity: 1; }
     .card-icon {
       font-size: 2.4rem;
       line-height: 1;
       margin-bottom: 1rem;
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.45));
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.45));
     }
     .card-title {
       font-family: 'Cinzel', serif;
@@ -290,9 +297,9 @@
       text-transform: uppercase;
       color: var(--gold-light);
       padding: 0.25rem 0.7rem;
-      border: 1px solid rgba(212, 175, 55, 0.35);
+      border: 1px solid rgba(255, 215, 0, 0.35);
       border-radius: 9999px;
-      background: rgba(212, 175, 55, 0.06);
+      background: rgba(255, 215, 0, 0.06);
     }
     .timeline { position: relative; }
     .timeline::before {
@@ -300,7 +307,7 @@
       position: absolute;
       left: 23px; top: 8px; bottom: 8px;
       width: 2px;
-      background: linear-gradient(180deg, transparent, rgba(212,175,55,.55), rgba(212,175,55,.55), transparent);
+      background: linear-gradient(180deg, transparent, rgba(255, 215, 0,.55), rgba(255, 215, 0,.55), transparent);
     }
     .timeline-item {
       position: relative;
@@ -318,8 +325,8 @@
       font-size: 1.3rem;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, rgba(90,19,34,.9), rgba(17,19,31,.95));
-      border: 1.5px solid rgba(212, 175, 55, 0.55);
-      box-shadow: 0 0 16px rgba(212, 175, 55, 0.35);
+      border: 1.5px solid rgba(255, 215, 0, 0.55);
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.35);
     }
     .timeline-card { flex: 1; }
     .spell-card { perspective: 1100px; height: 200px; }
@@ -342,7 +349,7 @@
       text-align: center;
       border-radius: 16px;
       backface-visibility: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.3);
     }
     .spell-card-front {
       background: linear-gradient(160deg, rgba(17,19,31,.85), rgba(90,19,34,.4));
@@ -357,7 +364,7 @@
     }
     .spell-rune {
       font-size: 2.6rem;
-      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+      filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
       animation: runePulse 3s ease-in-out infinite;
     }
     @keyframes runePulse {
@@ -367,10 +374,10 @@
     .spell-card-back {
       background: linear-gradient(160deg, rgba(90,19,34,.7), rgba(17,19,31,.92));
       transform: rotateY(180deg);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.25) inset;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.25) inset;
     }
     .spell-card-back p { color: var(--gold-light); font-style: italic; line-height: 1.55; }
-    .spell-card:hover { filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.25)); }
+    .spell-card:hover { filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.25)); }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.001ms !important;
@@ -751,40 +758,87 @@
         }
       })();
 
-      (function starryNight() {
+      (function skyAndEmbers() {
         if (prefersReduced) return;
         const canvas = document.getElementById('night-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let stars = [];
+        let embers = [];
         let w, h;
+        // Warm sunset ember palette
+        const emberColors = [
+          [255, 215, 0],   // gold
+          [255, 179, 71],  // amber
+          [255, 122, 24],  // sunset orange
+          [255, 233, 138], // pale gold
+        ];
+        function makeEmber(atBottom) {
+          const c = emberColors[(Math.random() * emberColors.length) | 0];
+          return {
+            x: Math.random() * w,
+            y: atBottom ? h + Math.random() * 40 : Math.random() * h,
+            r: Math.random() * 2.2 + 0.8,
+            vy: -(Math.random() * 0.5 + 0.18),
+            vx: (Math.random() - 0.5) * 0.35,
+            sway: Math.random() * Math.PI * 2,
+            swaySpeed: Math.random() * 0.02 + 0.006,
+            base: Math.random() * 0.4 + 0.35,
+            tw: Math.random() * 0.04 + 0.01,
+            phase: Math.random() * Math.PI * 2,
+            c: c,
+          };
+        }
         function resize() {
           w = canvas.width = window.innerWidth;
           h = canvas.height = window.innerHeight;
-          const density = Math.floor((w * h) / 9000);
+          const starCount = Math.floor((w * h) / 11000);
+          const emberCount = Math.floor((w * h) / 26000);
           stars = [];
-          for (let i = 0; i < density; i++) {
+          for (let i = 0; i < starCount; i++) {
             stars.push({
               x: Math.random() * w,
-              y: Math.random() * h,
-              r: Math.random() * 1.4 + 0.3,
-              base: Math.random() * 0.5 + 0.25,
+              y: Math.random() * h * 0.7,
+              r: Math.random() * 1.3 + 0.3,
+              base: Math.random() * 0.45 + 0.2,
               tw: Math.random() * 0.02 + 0.004,
               phase: Math.random() * Math.PI * 2,
-              gold: Math.random() > 0.78,
+              gold: Math.random() > 0.7,
             });
           }
+          embers = [];
+          for (let i = 0; i < emberCount; i++) embers.push(makeEmber(false));
         }
         function draw() {
           ctx.clearRect(0, 0, w, h);
+          // twinkling stars
           for (const s of stars) {
             s.phase += s.tw;
-            const a = s.base + Math.sin(s.phase) * 0.25;
+            const a = s.base + Math.sin(s.phase) * 0.22;
             ctx.beginPath();
             ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fillStyle = s.gold ? 'rgba(245, 217, 122, ' + a + ')' : 'rgba(255, 255, 255, ' + a + ')';
+            ctx.fillStyle = s.gold ? 'rgba(255, 233, 138, ' + a + ')' : 'rgba(255, 255, 255, ' + a + ')';
             ctx.shadowBlur = s.gold ? 8 : 4;
-            ctx.shadowColor = s.gold ? 'rgba(212,175,55,0.8)' : 'rgba(255,255,255,0.6)';
+            ctx.shadowColor = s.gold ? 'rgba(255,215,0,0.8)' : 'rgba(255,255,255,0.6)';
+            ctx.fill();
+          }
+          // floating embers
+          for (let i = 0; i < embers.length; i++) {
+            const e = embers[i];
+            e.sway += e.swaySpeed;
+            e.phase += e.tw;
+            e.y += e.vy;
+            e.x += e.vx + Math.sin(e.sway) * 0.4;
+            const a = e.base + Math.sin(e.phase) * 0.3;
+            if (e.y < -20 || e.x < -30 || e.x > w + 30) {
+              embers[i] = makeEmber(true);
+              continue;
+            }
+            ctx.beginPath();
+            ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + e.c[0] + ',' + e.c[1] + ',' + e.c[2] + ',' + a + ')';
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = 'rgba(' + e.c[0] + ',' + e.c[1] + ',' + e.c[2] + ',0.9)';
             ctx.fill();
           }
           ctx.shadowBlur = 0;
@@ -843,9 +897,9 @@
             if (p.life <= 0) { particles.splice(i, 1); continue; }
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(245, 217, 122, ' + p.life + ')';
+            ctx.fillStyle = 'rgba(255, 233, 138, ' + p.life + ')';
             ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(212, 175, 55, 0.9)';
+            ctx.shadowColor = 'rgba(255, 215, 0, 0.9)';
             ctx.fill();
           }
           ctx.shadowBlur = 0;
